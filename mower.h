@@ -1,14 +1,14 @@
-// Fichier     nom du fichier (.h / .cpp)
-// Auteur      Noam Dugerdil
-// Date        ...
+// File     mower.h
+// Author   Noam Dugerdil
+// Date     22.11.2022
 //
-// But         description détaillée du projet
+// Objective  Mower library
 //
-// Remarque
+// Remarks
 //
-// Modifs      Date / Auteur / Raison
+// Modifications
 //
-// Compilateur Bundled MinGW - Version w64 9.0
+// Compilator Bundled MinGW - Version w64 9.0
 
 #ifndef LABO_TONDEUSE_TONDEUSE_H
 #define LABO_TONDEUSE_TONDEUSE_H
@@ -16,12 +16,17 @@
 #include <vector>
 #include <array>
 
-using Land = std::vector<std::vector<char>>;
-using Mower = std::array<int, 3>;
+const char X = 'X';
+const char H = '~';
+const char C = '.';
+const char L = '#';
 
+using Land = std::vector<std::vector<char>>;
+using Mower = std::array<int, 2>;
 
 
 void mow(Land land, Mower mower, int moveLimit, bool idk);
 
+void displayLand(Land land);
 
 #endif //LABO_TONDEUSE_TONDEUSE_H

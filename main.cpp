@@ -75,7 +75,7 @@ int main(){
                         {H,H,H,H,L,L,L,L,L,L,L,L,L,L,L,L,L,L,L,L,L,L,L,L,L} };        // 26
 
     // position initiale de la tondeuse
-    Mower mow = {1, 3};
+    Mower mower = {1, 3};
 
     // tondre => n déplacements aléatoires
     mow(land, mower, 10'000, true);

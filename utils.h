@@ -1,6 +1,6 @@
-// Fichier     nom du fichier (.h / .cpp)
+// Fichier     utils.h
 // Auteur      Noam Dugerdil
-// Date        ...
+// Date        22.11.2022
 //
 // But         description détaillée du projet
 //
