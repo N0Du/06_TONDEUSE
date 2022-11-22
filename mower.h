@@ -13,9 +13,15 @@
 #ifndef LABO_TONDEUSE_TONDEUSE_H
 #define LABO_TONDEUSE_TONDEUSE_H
 
-using Field = vector<vector<char>>;
+#include <vector>
+#include <array>
 
-int DisplayField(Field field);
+using Land = std::vector<std::vector<char>>;
+using Mower = std::array<int, 3>;
+
+
+
+void mow(Land land, Mower mower, int moveLimit, bool idk);
 
 
 #endif //LABO_TONDEUSE_TONDEUSE_H

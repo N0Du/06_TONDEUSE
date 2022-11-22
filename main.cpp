@@ -3,11 +3,11 @@
 // Auteur      GM Breguet
 // Date        21.11.2022
 //
-// But         Tondeuse automatique
+// But         Automatic lawnmower
 //
 // Remarque
 //
-// Modifs      n/a
+// Modifs      Noam / Hasan : Translated to english
 //
 // Compilateur
 //------------------------------------------------------------------------------
@@ -15,8 +15,8 @@
 #include <cstdlib>
 #include <iostream>
 
-#include "annexe.h"
-#include "tondeuse.h"
+#include "utils.h"
+#include "mower.h"
 
 using namespace std;
 
@@ -46,7 +46,7 @@ int main(){
     //---------------------------------------------------------------------------
     //                    1                   2
                        //0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8
-    Terrain terrain = { {L,L,L,L,L,L,L,L,L,L,L,L,L,L,L,L,L,L,L,L,L,L,L,L,L,X,X,X,X},  //  0
+    Land land       = { {L,L,L,L,L,L,L,L,L,L,L,L,L,L,L,L,L,L,L,L,L,L,L,L,L,X,X,X,X},  //  0
                         {L,H,H,H,H,H,H,H,H,H,H,H,H,H,H,H,H,H,H,H,H,H,H,H,H,X,X,X,X},  //  1
                         {L,H,H,H,H,H,H,H,H,H,H,H,H,H,H,H,H,H,H,H,H,H,H,H,H,X,X,X,X},  //  2
                         {L,H,H,H,H,H,H,H,H,H,H,H,H,H,H,H,H,H,H,H,H,H,H,H,H,H,H,H,L},  //  3
@@ -75,10 +75,10 @@ int main(){
                         {H,H,H,H,L,L,L,L,L,L,L,L,L,L,L,L,L,L,L,L,L,L,L,L,L} };        // 26
 
     // position initiale de la tondeuse
-    Tondeuse tondeuse = {1, 3};
+    Mower mow = {1, 3};
 
     // tondre => n déplacements aléatoires
-    tondre(terrain, tondeuse, 10'000, true);
+    mow(land, mower, 10'000, true);
 
     return EXIT_SUCCESS;
 }
