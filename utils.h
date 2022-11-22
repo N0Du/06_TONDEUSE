@@ -14,7 +14,7 @@
 #define LABO_TONDEUSE_ANNEXE_H
 
 
-int RandomInt(int min, int max);
 
+int RandomInt(int min, int max);
 
 #endif //LABO_TONDEUSE_ANNEXE_H

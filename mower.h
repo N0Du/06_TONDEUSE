@@ -13,9 +13,9 @@
 #ifndef LABO_TONDEUSE_TONDEUSE_H
 #define LABO_TONDEUSE_TONDEUSE_H
 
+
 using Field = vector<vector<char>>;
 
 int DisplayField(Field field);
-
 
 #endif //LABO_TONDEUSE_TONDEUSE_H
