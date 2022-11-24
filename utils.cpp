@@ -1,18 +1,25 @@
-// Fichier     utils.cpp
-// Auteur      Noam Dugerdil
+// File        utils.cpp
+// Author      Noam Dugerdil
 // Date        22.11.2022
 //
-// But         description détaillée du projet
+// Purpose     Provide basic utilitary function
 //
-// Remarque
+// Remarks
 //
-// Modifs      Date / Auteur / Raison
+// Modifications
 //
-// Compilateur Bundled MinGW - Version w64 9.0
+// Compilator  Bundled MinGW - Version w64 9.0
 
-#include "utils.h"
-#include <cmath>
+#ifndef LABO_TONDEUSE_ANNEXE_H
+#define LABO_TONDEUSE_ANNEXE_H
 
-int RandomInt(int min, int max){
-    return min + (rand() % static_cast<int>(max - min + 1));
-}
+// name        RandomInt
+// Purpose     Return a random int in a given range
+// param       min       Minimum value that could be returned
+// param       max       Maximum value that could be returned
+// return      int       Random number between min and max (Both included)
+// exception   n/a
+int RandomInt(int min, int max);
+
+
+#endif //LABO_TONDEUSE_ANNEXE_H
