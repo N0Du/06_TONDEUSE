@@ -1,5 +1,5 @@
 //------------------------------------------------------------------------------
-// Fichier     main.h
+// Fichier     main.cpp
 // Auteur      GM Breguet
 // Date        21.11.2022
 //
@@ -7,17 +7,13 @@
 //
 // Remarque
 //
-// Modifs      Noam & Hasan : Translated variable names to english - 22.11.2022
-//                            Change the inlcudes names to the translated names - 22.11.2022
-//                            Removed unused include - 24.11.2022
+// Modifs      n/a
 //
 // Compilateur
 //------------------------------------------------------------------------------
 
 #include <cstdlib>
-#include <iostream>
-
-#include "mower.h"
+#include "tondeuse.h"
 
 using namespace std;
 
@@ -46,8 +42,8 @@ int main(){
     // - '.' : herbe coupée
     //---------------------------------------------------------------------------
     //                    1                   2
-                       //0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8
-    Land land       = { {L,L,L,L,L,L,L,L,L,L,L,L,L,L,L,L,L,L,L,L,L,L,L,L,L,X,X,X,X},  //  0
+    //0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8
+    Terrain terrain = { {L,L,L,L,L,L,L,L,L,L,L,L,L,L,L,L,L,L,L,L,L,L,L,L,L,X,X,X,X},  //  0
                         {L,H,H,H,H,H,H,H,H,H,H,H,H,H,H,H,H,H,H,H,H,H,H,H,H,X,X,X,X},  //  1
                         {L,H,H,H,H,H,H,H,H,H,H,H,H,H,H,H,H,H,H,H,H,H,H,H,H,X,X,X,X},  //  2
                         {L,H,H,H,H,H,H,H,H,H,H,H,H,H,H,H,H,H,H,H,H,H,H,H,H,H,H,H,L},  //  3
@@ -76,10 +72,13 @@ int main(){
                         {H,H,H,H,L,L,L,L,L,L,L,L,L,L,L,L,L,L,L,L,L,L,L,L,L} };        // 26
 
     // position initiale de la tondeuse
-    Mower mower = {1, 3};
+    Tondeuse tondeuse = {1, 3};
 
     // tondre => n déplacements aléatoires
-    mow(land, mower, 10'000, true);
+    tondre(terrain,      // terrain de travail
+           tondeuse,     // tondeuse
+           10'000,       // nbre de pas
+           true);        // afficher à chaque pas
 
     return EXIT_SUCCESS;
 }

@@ -3,4 +3,4 @@ project(Labo_Tondeuse)
 
 set(CMAKE_CXX_STANDARD 20)
 
-add_executable(Labo_Tondeuse main.cpp mower.h utils.h mower.cpp utils.cpp)
+add_executable(Labo_Tondeuse main.cpp annexe.cpp annexe.h  tondeuse.cpp  tondeuse.h)
