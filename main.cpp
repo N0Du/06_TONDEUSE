@@ -7,7 +7,9 @@
 //
 // Remarque
 //
-// Modifs      Noam / Hasan : Translated to english
+// Modifs      Noam & Hasan : Translated variable names to english - 22.11.2022
+//                            Change the inlcudes names to the translated names - 22.11.2022
+//                            Removed unused include - 24.11.2022
 //
 // Compilateur
 //------------------------------------------------------------------------------
@@ -15,7 +17,6 @@
 #include <cstdlib>
 #include <iostream>
 
-#include "utils.h"
 #include "mower.h"
 
 using namespace std;

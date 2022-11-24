@@ -1,18 +1,20 @@
-// Fichier     utils.cpp
-// Auteur      Noam Dugerdil
+// File        utils.cpp
+// Author      Noam Dugerdil
 // Date        22.11.2022
 //
-// But         description détaillée du projet
+// Purpose     Define basic utilitary function
 //
-// Remarque
+// Remarks
 //
-// Modifs      Date / Auteur / Raison
+// Modifications
 //
-// Compilateur Bundled MinGW - Version w64 9.0
+// Compilator  Bundled MinGW - Version w64 9.0
 
 #include "utils.h"
 #include <cmath>
 
 int RandomInt(int min, int max){
+
+    //Return a random int between min (included) and max (included)
     return min + (rand() % static_cast<int>(max - min + 1));
 }
