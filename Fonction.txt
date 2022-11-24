@@ -1,0 +1,14 @@
+utils.h
+	displayField(): Display the matrix containing the data of the field
+	random():
+
+
+mower.h
+	
+	canMove(direction) : Check if the mower can move to the specified position
+	move(Direction): Move the mower to the specified position
+	mow(): Generate direction -> canMove -> move
+	
+	
+		
+	
