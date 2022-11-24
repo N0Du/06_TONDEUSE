@@ -57,8 +57,6 @@ void cut(Land& land, const Mower& mower);
 // exception   n/a
 void move(Mower& mower, const array<int, 2>& position);
 
-
-
 //===============================
 // Variables declaration
 //===============================
