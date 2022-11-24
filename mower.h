@@ -22,11 +22,9 @@ const char C = '.';
 const char L = '#';
 
 using Land = std::vector<std::vector<char>>;
-using Mower = std::array<int, 2>;
+using Mower = std::vector<int>;
 
 
-void mow(Land land, Mower mower, int moveLimit, bool idk);
-
-void displayLand(Land land);
+void mow(Land& land, Mower& mower, int moveLimit, bool idk);
 
 #endif //LABO_TONDEUSE_TONDEUSE_H
