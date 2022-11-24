@@ -145,9 +145,9 @@ void move(Mower& mower, const Position& position){
     mower.back()  = position.back();
 }
 
-void cut(Land& land, const Mower& mower){
+void cut(Land& land, const Mower& mower) {
     //Check if the mower is on uncutted grass
-    if(land.at(mower.front()).at(mower.back()) == H){
+    if (land.at(mower.front()).at(mower.back()) == H) {
         // Set the point the mower is on to cut grass
         land.at(mower.front()).at(mower.back()) = C;
     }

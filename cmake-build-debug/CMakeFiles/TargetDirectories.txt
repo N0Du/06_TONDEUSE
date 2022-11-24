@@ -1,3 +1,0 @@
-C:/Users/noamd/CLionProjects/Labo_Tondeuse/cmake-build-debug/CMakeFiles/Labo_Tondeuse.dir
-C:/Users/noamd/CLionProjects/Labo_Tondeuse/cmake-build-debug/CMakeFiles/edit_cache.dir
-C:/Users/noamd/CLionProjects/Labo_Tondeuse/cmake-build-debug/CMakeFiles/rebuild_cache.dir

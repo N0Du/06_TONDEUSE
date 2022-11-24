@@ -3,7 +3,7 @@
 // Auteur      GM Breguet
 // Date        21.11.2022
 //
-// But         Automatic lawnmower
+// But         Tondeuse automatique
 //
 // Remarque
 //
