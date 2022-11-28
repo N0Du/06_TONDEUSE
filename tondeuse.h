@@ -1,14 +1,14 @@
-// File     mower.h
-// Author   Noam Dugerdil
-// Date     22.11.2022
+// Fichier     tondeuse.h
+// Auteur      Noam Dugerdil - Hasan Ilingi
+// Date        22.11.2022
 //
-// Usage    Provide function to display a field, and create a mower to mow it.
+// But         Affiche un champ dans lequel une tondeuse tond le gazon
 //
-// Remarks  Code / Comments in english except for the
+// Remarque
 //
-// Modifications
+// Modifs      Date / Auteur / Raison
 //
-// Compilator Bundled MinGW - Version w64 9.0
+// Compilateur Bundled MinGW - Version w64 9.0
 
 #ifndef LABO_TONDEUSE_TONDEUSE_H
 #define LABO_TONDEUSE_TONDEUSE_H
@@ -16,26 +16,26 @@
 #include <vector>
 #include <array>
 
-// Field "objects" variables
+// Variable definissant la "forme" des "objets" du terrain.
 const char X = 'X';     // Obstacle
-const char H = '~';     // Uncutted grass
-const char C = '.';     // Cutted grass
-const char L = '#';     // Limit of the field
+const char H = '~';     // Herbe non coupée
+const char C = '.';     // Herbe coupée
+const char L = '#';     // Limite du terrain
 
-// Type definition
+// Définition des types
 using Terrain  = std::vector<std::vector<char>>;
 using Tondeuse = std::array<int, 2>;
-using Position = std::array<int, 2>; // Same as mower but redeclared to make the code more understandable
+using Position = std::array<int, 2>;    // équivalent au type Tondeuse mais redéclaration pour améliorer la lisibilité
+                                        //du code
 
 
-// name        mow
-// usage       update the mower and the field. Then display the field
-// param       land        Reference to the 2D vector containing the data of the field
-// param       mower       array of 2 int, contain the position of the mower in the field
-// param       moveLimit   Number of steps the mower is going to do
-// param       idk         I DONT KNOW
-// return      void
+// nom         tondre
+// but         Gestion de la tondeuse et affichage (ou non) du terrain
+// param       terrain             Les données du terrain
+// param       tondeuse            La variable contenant la position de notre tondeuse
+// param       nbDeplacement       Le nombre maximal de déplacement de la tondeuse
+// param       affichage           Défini si le terrain doit être afficher ou non.
 // exception   n/a
-void tondre(Terrain& terrain, Tondeuse& tondeuse, int moveLimit, bool display);
+void tondre(Terrain& terrain, Tondeuse& tondeuse, int nbDeplacement, bool affichage);
 
 #endif //LABO_TONDEUSE_TONDEUSE_H

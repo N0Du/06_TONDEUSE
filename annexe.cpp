@@ -1,27 +1,24 @@
-// File        utils.cpp
-// Author      Noam Dugerdil
+// Fichier     utils.cpp
+// Auteur      Noam Dugerdil - Hasan Ilingi
 // Date        22.11.2022
 //
-// Purpose     Define basic utilitary function
+// But         Met a disposition des fonctions utilitaires
 //
-// Remarks
+// Remarque
 //
-// Modifications
+// Modifs      Date / Auteur / Raison
 //
-// Compilator  Bundled MinGW - Version w64 9.0
+// Compilateur Bundled MinGW - Version w64 9.0
 #include "annexe.h"
-#include <ctime>
-#include <cstdlib>
-
+#include <random>
 using namespace std;
 
-int RandomInt(int min, int max){
+int IntAleatoire(int min, int max){
+    // Déclaration librairie random
+    random_device                  device;
+    default_random_engine          generateur(device());
+    uniform_int_distribution<int>  distribution(min, max);
 
-    //Return a random int between min (included) and max (included)
-    srand(time(NULL));
-    //return min + (rand() % RAND_MAX static_cast<int>(max - min + 1));
-    return rand() % 4;
-
-
-    //return min + (rand() % RAND_MAX static_cast<int>(max - min + 1));
+    // Retourne une valeure aléatoire
+    return distribution(generateur);
 }

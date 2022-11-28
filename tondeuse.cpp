@@ -1,14 +1,14 @@
-// File        mower.cpp
-// Author      Noam Dugerdil
+// Fichier     mower.cpp
+// Auteur      Noam Dugerdil - Hasan Ilingi
 // Date        22.11.2022
 //
-// Usage       Functions to display a field, and simulate a mower to mow it.
+// But         Affiche un champ dans lequel une tondeuse tond le gazon
 //
-// Remarks
+// Remarque
 //
-// Modifications
+// Modifs      Date / Auteur / Raison
 //
-// Compilator  Bundled MinGW - Version w64 9.0
+// Compilateur Bundled MinGW - Version w64 9.0
 #include "tondeuse.h"
 #include "annexe.h"
 
@@ -18,58 +18,60 @@
 
 using namespace std;
 
-//==============================
-// Internal function declaration
-//==============================
+//===================================
+// Déclaration des fonctions internes
+//===================================
 
-// name        displayLand
-// usage       Display the given field
-// param       land       Reference to the 2D vector containing the data of the field
+// nom         afficherTerrain
+// but         Fonction permettant d'afficher le terrain
+// param       terrain      Données du terrain à afficher
 // return      void
 // exception   n/a
-void displayLand(Terrain& terrain);
+void afficherTerrain(Terrain& terrain);
 
-// name        nextPosition
-// usage       randomly get the next position the mow should go.
-// param       mower      Reference to the array containing the mower position
-// return      Position   New position of the mower
+// nom         positionSuivante
+// but         Calcul la potentiel prochaine position de la tondeuse
+// param       tondeuse      Notre tondeuse (Sa position)
+// return      Position      La potentiel futur position de la tondeuse
 // exception   n/a
-Position nextPosition (const Tondeuse& tondeuse);
+Position positionSuivante(const Tondeuse& tondeuse);
 
-// name        canMove
-// usage       Check if the mower is allowed to move to a given position
-// param       land       Reference to the 2D vector containing the data of the field
-// return      Position   Position the mower want to go
+// nom         peuxSeDeplacer
+// but         Test si la tondeuse et autorisé à se déplacer sur la position voulue
+// param       terrain             Données de notre terrain
+// param       nouvellePosition    La position sur laquelle la tondeuse veut se déplacer
+// return      bool                Est-ce qu'elle a droit de s'y déplacer
 // exception   n/a
-bool canMove(const Terrain& terrain, const Position& newPosition);
+bool peuxSeDeplacer(const Terrain& terrain, const Position& nouvellePosition);
 
-// name        cut
-// usage       If the mower is on uncutted grass, change the data in the field to cutted grass
-// param       land       Reference to the 2D vector containing the data of the field
-// return      mower      Reference to the array containing the position of the mower
+// nom         couper
+// but         Coupe l'herbe sur laquelle la tondeuse se trouve
+// param       terrain             Données de notre terrain
+// param       tondeuse            Position de la tondeuse
+// return      void
 // exception   n/a
-void cut(Terrain& terrain, const Tondeuse& tondeuse);
+void couper(Terrain& terrain, const Tondeuse& tondeuse);
 
-// name        move
-// usage       Move the mower to a given position
-// param       mower      Reference to the array containing the position of the mower
-// return      position   New position the mower will move to
+// nom         deplacer
+// but         Déplace la tondeuse à la position donnée
+// param       tondeuse            La position de notre tondeuse
+// param       nouvellePosition    La position sur laquelle la tondeuse va se déplacer
 // exception   n/a
-void move(Tondeuse& tondeuse, const Position& position);
+void deplacer(Tondeuse& tondeuse, const Position& position);
 
 //===============================
-// Variables declaration
+// Déclaration des variable
 //===============================
-const int NB_DIRECTION = 4; // Number of direction possible in the DIRECTION class
-const int COL = 2;          // Widness of the collumns for the display
+const int NB_DIRECTION = 4; // Nombre de direction possible dans l'enum
+const int COL = 2;          // Largeur des collones lors de l'affichage
 
 
-// Enum containing the direction the mower can go
+// enum contenant les différentes déplacements que la tondeuse peut effectuer
 enum class DIRECTION {
-    UP,
-    DOWN,
-    RIGHT,
-    LEFT
+    HAUT,
+    BAS,
+    DROITE,
+    GAUCHE
 };
 
 
@@ -77,33 +79,32 @@ enum class DIRECTION {
 // Function definitions
 //============================
 
-void tondre(Terrain& terrain, Tondeuse& tondeuse, int moveLimit, bool display){
-    // Main loop of the mow function
-    for(size_t i = 0; i<moveLimit; ++i){
-        Position newPos = {};
+void tondre(Terrain& terrain, Tondeuse& tondeuse, int nbDeplacement, bool affichage){
+    // Boucle principale de la fonction
+    for(size_t i = 0; i<nbDeplacement; ++i){
+        Position nouvellePos = {};
 
-        bool willMove = false;
-        // Loop until the mower as found a position to move
-        while(!willMove){
-             newPos = nextPosition(tondeuse);
+        bool positionValide = false;
 
-            if(canMove(terrain, newPos)){
-                willMove = true;
-            }
+        // Calcul une nouvelle position jusqu'à que la tondeuse puisse s'y déplacer
+        while(!positionValide){
+            nouvellePos = positionSuivante(tondeuse);
+            positionValide = peuxSeDeplacer(terrain, nouvellePos);
         }
-        move(tondeuse, newPos);
-        cut(terrain, tondeuse);
 
-        if(display)
-            displayLand(terrain);
+        deplacer(tondeuse, nouvellePos);
+        couper(terrain, tondeuse);
+
+        if(affichage)
+            afficherTerrain(terrain);
     }
 }
 
-void displayLand(Terrain& terrain){
-    // Clear the display
+void afficherTerrain(Terrain& terrain){
+    // Vide l'affichage de la console
     system("clear");
 
-    //Display the field
+    // Affiche le terrain
     for(auto & line : terrain){
         for(char row : line){
             cout << right << setw(COL) << row;
@@ -112,40 +113,41 @@ void displayLand(Terrain& terrain){
     }
 }
 
-Position nextPosition (const Tondeuse& tondeuse){
-    // Get a random int to define wich direction the mow should go
-    auto dir = (DIRECTION) RandomInt(0, NB_DIRECTION-1); // Auto to avoid a warning
+Position positionSuivante (const Tondeuse& tondeuse){
+    // Défini une direction aléatoire
+    auto dir = (DIRECTION) IntAleatoire(0, NB_DIRECTION-1); // Auto to avoid a warning
 
-    Position newPosition = tondeuse;
+    Position nouvellePosition = tondeuse;
 
-    // Calculate what will be the position of the mower based on the direction
+    // Calcule la nouvelle position de la tondeuse en fonction de la direction
     switch(dir){
-        case DIRECTION::UP:    newPosition.front() = tondeuse.front() - 1; break;
-        case DIRECTION::DOWN:  newPosition.front() = tondeuse.front() + 1; break;
-        case DIRECTION::RIGHT: newPosition.back()  = tondeuse.back()  + 1; break;
-        case DIRECTION::LEFT:  newPosition.back()  = tondeuse.back()  - 1; break;
+        case DIRECTION::HAUT:    nouvellePosition.front() = tondeuse.front() - 1; break;
+        case DIRECTION::BAS:     nouvellePosition.front() = tondeuse.front() + 1; break;
+        case DIRECTION::DROITE:  nouvellePosition.back()  = tondeuse.back()  + 1; break;
+        case DIRECTION::GAUCHE:  nouvellePosition.back()  = tondeuse.back()  - 1; break;
     }
 
-    return newPosition;
+    return nouvellePosition;
 }
 
-bool canMove(const Terrain& terrain, const Position& newPosition){
-    char nextPositionObject = terrain.at(newPosition.front()).at(newPosition.back());
+bool peuxSeDeplacer(const Terrain& terrain, const Position& nouvellePosition){
+    // Récupere le type d'objet sur la position voulue
+    char objetSurLaPositionVoulue = terrain.at(nouvellePosition.front()).at(nouvellePosition.back());
 
-    // Return false if the "Object" at the position is either an obstacle or a limit.
-    if(nextPositionObject == L || nextPositionObject == X)
+    // Retourne false si le tondeuse ne peut pas se déplacer à la position voulue.
+    if(objetSurLaPositionVoulue == L || objetSurLaPositionVoulue == X)
         return false;
 
     return true;
 }
 
-void move(Tondeuse& tondeuse, const Position& position){
-    // Update the mower "position" value to the new position
+void deplacer(Tondeuse& tondeuse, const Position& position){
+    // Met a jour l'array de la tondeuse pour changer sa position
     tondeuse.front() = position.front();
     tondeuse.back()  = position.back();
 }
 
-void cut(Terrain& terrain, const Tondeuse& tondeuse) {
-    //Check if the mower is on uncutted grass
+void couper(Terrain& terrain, const Tondeuse& tondeuse) {
+    // Rempace la case sur lauqelle la tondeuse se trouve par de l'herbe coupée.
     terrain.at(tondeuse.front()).at(tondeuse.back()) = C;
 }
