@@ -51,23 +51,23 @@ build cmake_object_order_depends_target_Labo_Tondeuse: phony || CMakeFiles/Labo_
 
 build CMakeFiles/Labo_Tondeuse.dir/main.cpp.obj: CXX_COMPILER__Labo_Tondeuse_Debug C$:/Users/noamd/CLionProjects/Labo_Tondeuse/main.cpp || cmake_object_order_depends_target_Labo_Tondeuse
   DEP_FILE = CMakeFiles\Labo_Tondeuse.dir\main.cpp.obj.d
-  FLAGS = -g -std=gnu++20
+  FLAGS = -Wall -Wextra -Wconversion -Wsign-conversion -pedantic -g -std=gnu++20
   OBJECT_DIR = CMakeFiles\Labo_Tondeuse.dir
   OBJECT_FILE_DIR = CMakeFiles\Labo_Tondeuse.dir
   TARGET_COMPILE_PDB = CMakeFiles\Labo_Tondeuse.dir\
   TARGET_PDB = Labo_Tondeuse.pdb
 
-build CMakeFiles/Labo_Tondeuse.dir/mower.cpp.obj: CXX_COMPILER__Labo_Tondeuse_Debug C$:/Users/noamd/CLionProjects/Labo_Tondeuse/mower.cpp || cmake_object_order_depends_target_Labo_Tondeuse
-  DEP_FILE = CMakeFiles\Labo_Tondeuse.dir\mower.cpp.obj.d
-  FLAGS = -g -std=gnu++20
+build CMakeFiles/Labo_Tondeuse.dir/annexe.cpp.obj: CXX_COMPILER__Labo_Tondeuse_Debug C$:/Users/noamd/CLionProjects/Labo_Tondeuse/annexe.cpp || cmake_object_order_depends_target_Labo_Tondeuse
+  DEP_FILE = CMakeFiles\Labo_Tondeuse.dir\annexe.cpp.obj.d
+  FLAGS = -Wall -Wextra -Wconversion -Wsign-conversion -pedantic -g -std=gnu++20
   OBJECT_DIR = CMakeFiles\Labo_Tondeuse.dir
   OBJECT_FILE_DIR = CMakeFiles\Labo_Tondeuse.dir
   TARGET_COMPILE_PDB = CMakeFiles\Labo_Tondeuse.dir\
   TARGET_PDB = Labo_Tondeuse.pdb
 
-build CMakeFiles/Labo_Tondeuse.dir/utils.cpp.obj: CXX_COMPILER__Labo_Tondeuse_Debug C$:/Users/noamd/CLionProjects/Labo_Tondeuse/utils.cpp || cmake_object_order_depends_target_Labo_Tondeuse
-  DEP_FILE = CMakeFiles\Labo_Tondeuse.dir\utils.cpp.obj.d
-  FLAGS = -g -std=gnu++20
+build CMakeFiles/Labo_Tondeuse.dir/tondeuse.cpp.obj: CXX_COMPILER__Labo_Tondeuse_Debug C$:/Users/noamd/CLionProjects/Labo_Tondeuse/tondeuse.cpp || cmake_object_order_depends_target_Labo_Tondeuse
+  DEP_FILE = CMakeFiles\Labo_Tondeuse.dir\tondeuse.cpp.obj.d
+  FLAGS = -Wall -Wextra -Wconversion -Wsign-conversion -pedantic -g -std=gnu++20
   OBJECT_DIR = CMakeFiles\Labo_Tondeuse.dir
   OBJECT_FILE_DIR = CMakeFiles\Labo_Tondeuse.dir
   TARGET_COMPILE_PDB = CMakeFiles\Labo_Tondeuse.dir\
@@ -81,8 +81,8 @@ build CMakeFiles/Labo_Tondeuse.dir/utils.cpp.obj: CXX_COMPILER__Labo_Tondeuse_De
 #############################################
 # Link the executable Labo_Tondeuse.exe
 
-build Labo_Tondeuse.exe: CXX_EXECUTABLE_LINKER__Labo_Tondeuse_Debug CMakeFiles/Labo_Tondeuse.dir/main.cpp.obj CMakeFiles/Labo_Tondeuse.dir/mower.cpp.obj CMakeFiles/Labo_Tondeuse.dir/utils.cpp.obj
-  FLAGS = -g
+build Labo_Tondeuse.exe: CXX_EXECUTABLE_LINKER__Labo_Tondeuse_Debug CMakeFiles/Labo_Tondeuse.dir/main.cpp.obj CMakeFiles/Labo_Tondeuse.dir/annexe.cpp.obj CMakeFiles/Labo_Tondeuse.dir/tondeuse.cpp.obj
+  FLAGS = -Wall -Wextra -Wconversion -Wsign-conversion -pedantic -g
   LINK_LIBRARIES = -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = CMakeFiles\Labo_Tondeuse.dir
   POST_BUILD = cd .
