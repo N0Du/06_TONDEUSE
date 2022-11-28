@@ -12,12 +12,12 @@
 #ifndef LABO_TONDEUSE_ANNEXE_H
 #define LABO_TONDEUSE_ANNEXE_H
 
-// nom         IntAleatoire
-// but         Fonction retournant un int aléatoire dans une intervalle donnée (Interval comprise)
+// nom         intAleatoire
+// but         Fonction retournant un int aléatoire dans une intervalle donnée (Intervalle comprise)
 // param       min         valeur min comprise de l'intervalle
 // param       max         valeur max comprise de l'intervalle
 // return      int aléatoire
 // exception   n/a
-int IntAleatoire(int min, int max);
+int intAleatoire(int min, int max);
 
 #endif //LABO_TONDEUSE_ANNEXE_H

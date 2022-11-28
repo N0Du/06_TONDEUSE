@@ -2,7 +2,7 @@
 // Auteur      Noam Dugerdil - Hasan Ilingi
 // Date        22.11.2022
 //
-// But         Affiche un champ dans lequel une tondeuse tond le gazon
+// But         Affiche un champ dans lequel une tondeuse tond l'herbe
 //
 // Remarque
 //

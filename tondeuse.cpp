@@ -27,12 +27,12 @@ using namespace std;
 // param       terrain      Données du terrain à afficher
 // return      void
 // exception   n/a
-void afficherTerrain(Terrain& terrain);
+void afficherTerrain(const Terrain& terrain);
 
 // nom         positionSuivante
-// but         Calcul la potentiel prochaine position de la tondeuse
+// but         Calcul la potentielle prochaine position de la tondeuse
 // param       tondeuse      Notre tondeuse (Sa position)
-// return      Position      La potentiel futur position de la tondeuse
+// return      Position      La potentielle future position de la tondeuse
 // exception   n/a
 Position positionSuivante(const Tondeuse& tondeuse);
 
@@ -62,11 +62,11 @@ void deplacer(Tondeuse& tondeuse, const Position& position);
 //===============================
 // Déclaration des variable
 //===============================
-const int NB_DIRECTION = 4; // Nombre de direction possible dans l'enum
-const int COL = 2;          // Largeur des collones lors de l'affichage
+const int NB_DIRECTION = 4; // Nombre de directions possible dans l'enum
+const int COL = 2;          // Largeur des colonnes lors de l'affichage
 
 
-// enum contenant les différentes déplacements que la tondeuse peut effectuer
+// enum contenant les différents déplacements que la tondeuse peut effectuer
 enum class DIRECTION {
     HAUT,
     BAS,
@@ -80,19 +80,20 @@ enum class DIRECTION {
 //============================
 
 void tondre(Terrain& terrain, Tondeuse& tondeuse, int nbDeplacement, bool affichage){
-    // Boucle principale de la fonction
+    // Boucle principale de la fonction permettant de déplacer la tondeuse le nombre de fois voulu
     for(int i = 0; i< nbDeplacement; ++i){
-        Position nouvellePos = {};
+        Position nouvellePos;
 
-        bool positionValide = false;
+        bool posValide = false; // Est-ce que la tondeuse peut se déplacer sur la case voulue
 
         // Calcul une nouvelle position jusqu'à que la tondeuse puisse s'y déplacer
-        while(!positionValide){
-            nouvellePos = positionSuivante(tondeuse);
-            positionValide = peuxSeDeplacer(terrain, nouvellePos);
+        while(!posValide){
+            nouvellePos = positionSuivante(tondeuse);             // Récupere une position aléatoire sur laquelle la tondeuse pourrait se déplacer
+            posValide   = peuxSeDeplacer(terrain, nouvellePos);   // Vérifie si la tondeuse peut se déplacer a la position voulue
         }
 
         deplacer(tondeuse, nouvellePos);
+
         couper(terrain, tondeuse);
 
         if(affichage)
@@ -100,7 +101,7 @@ void tondre(Terrain& terrain, Tondeuse& tondeuse, int nbDeplacement, bool affich
     }
 }
 
-void afficherTerrain(Terrain& terrain){
+void afficherTerrain(const Terrain& terrain){
     // Vide l'affichage de la console
     system("clear");
 
@@ -115,7 +116,7 @@ void afficherTerrain(Terrain& terrain){
 
 Position positionSuivante (const Tondeuse& tondeuse){
     // Défini une direction aléatoire
-    auto dir = (DIRECTION) IntAleatoire(0, NB_DIRECTION-1); // Auto to avoid a warning
+    auto dir = (DIRECTION) intAleatoire(0, NB_DIRECTION-1); // Auto to avoid a warning
 
     Position nouvellePosition = tondeuse;
 
@@ -131,10 +132,10 @@ Position positionSuivante (const Tondeuse& tondeuse){
 }
 
 bool peuxSeDeplacer(const Terrain& terrain, const Position& nouvellePosition){
-    // Récupere le type d'objet sur la position voulue
+    // Récupere le type d'"objet" sur la position voulue
     char objetSurLaPositionVoulue = terrain.at(size_t(nouvellePosition.front())).at(size_t(nouvellePosition.back()));
 
-    // Retourne false si le tondeuse ne peut pas se déplacer à la position voulue.
+    // Retourne false si la tondeuse ne peut pas se déplacer à la position voulue.
     if(objetSurLaPositionVoulue == L || objetSurLaPositionVoulue == X)
         return false;
 
@@ -142,12 +143,12 @@ bool peuxSeDeplacer(const Terrain& terrain, const Position& nouvellePosition){
 }
 
 void deplacer(Tondeuse& tondeuse, const Position& position){
-    // Met a jour l'array de la tondeuse pour changer sa position
+    // Met à jour l'array de la tondeuse pour changer sa position
     tondeuse.front() = position.front();
     tondeuse.back()  = position.back();
 }
 
 void couper(Terrain& terrain, const Tondeuse& tondeuse) {
-    // Rempace la case sur lauqelle la tondeuse se trouve par de l'herbe coupée.
+    // Remplace la case sur laquelle la tondeuse se trouve par de l'herbe coupée.
     terrain.at(size_t(tondeuse.front())).at(size_t(tondeuse.back())) = C;
 }

@@ -13,12 +13,12 @@
 #include <random>
 using namespace std;
 
-int IntAleatoire(int min, int max){
+int intAleatoire(int min, int max){
     // Déclaration librairie random
     random_device                  device;
     default_random_engine          generateur(device());
     uniform_int_distribution<int>  distribution(min, max);
 
-    // Retourne une valeure aléatoire
+    // Retourne une valeur aléatoire
     return distribution(generateur);
 }
