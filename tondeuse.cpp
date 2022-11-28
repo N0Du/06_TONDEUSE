@@ -76,12 +76,12 @@ enum class DIRECTION {
 
 
 //============================
-// Function definitions
+// Définition des fonctions
 //============================
 
 void tondre(Terrain& terrain, Tondeuse& tondeuse, int nbDeplacement, bool affichage){
     // Boucle principale de la fonction
-    for(size_t i = 0; i<nbDeplacement; ++i){
+    for(int i = 0; i< nbDeplacement; ++i){
         Position nouvellePos = {};
 
         bool positionValide = false;
@@ -132,7 +132,7 @@ Position positionSuivante (const Tondeuse& tondeuse){
 
 bool peuxSeDeplacer(const Terrain& terrain, const Position& nouvellePosition){
     // Récupere le type d'objet sur la position voulue
-    char objetSurLaPositionVoulue = terrain.at(nouvellePosition.front()).at(nouvellePosition.back());
+    char objetSurLaPositionVoulue = terrain.at(size_t(nouvellePosition.front())).at(size_t(nouvellePosition.back()));
 
     // Retourne false si le tondeuse ne peut pas se déplacer à la position voulue.
     if(objetSurLaPositionVoulue == L || objetSurLaPositionVoulue == X)
@@ -149,5 +149,5 @@ void deplacer(Tondeuse& tondeuse, const Position& position){
 
 void couper(Terrain& terrain, const Tondeuse& tondeuse) {
     // Rempace la case sur lauqelle la tondeuse se trouve par de l'herbe coupée.
-    terrain.at(tondeuse.front()).at(tondeuse.back()) = C;
+    terrain.at(size_t(tondeuse.front())).at(size_t(tondeuse.back())) = C;
 }
